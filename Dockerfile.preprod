@@ -1,0 +1,22 @@
+FROM node:20-alpine
+
+# Set working directory
+WORKDIR /app
+
+# Copy file dependency
+COPY package.json pnpm-lock.yaml ./
+
+# Install dependency manager & dependencies
+RUN npm install -g pnpm && pnpm install
+
+# Copy semua source code
+COPY . .
+
+# Build project
+RUN pnpm run build:preprod
+
+# Expose port default dari preview server (biasanya 4173 untuk Vite)
+EXPOSE 4173
+
+# Jalankan preview server
+CMD ["pnpm", "run", "preview:preprod"]

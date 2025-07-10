@@ -1,0 +1,21 @@
+# Build Stage
+FROM node:20-alpine3.20
+
+# Set workdir
+WORKDIR /app
+
+# Copy dependency files
+COPY package.json pnpm-lock.yaml ./
+
+# Install PNPM & dependencies
+RUN npm install -g pnpm && pnpm install
+
+# Copy source code
+COPY . .
+
+# Build production
+RUN pnpm run build:production
+
+# Salin hasil build ke volume mount saat container dijalankan
+CMD ["sh", "-c", "rm -rf /output/* && cp -r /app/dist/* /output"]
+

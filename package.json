@@ -1,0 +1,85 @@
+{
+  "name": "hendryprasetyo",
+  "description": "Frontend chalange",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "author": {
+    "name": "Hendry Prasetyo",
+    "email": "hendryprasetyo13@gmail.com",
+    "url": "https://github.com/hendryprasetyo/fe-chalange-eigen"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build:preprod": "vite build --mode preprod",
+    "build:production": "tsc -b && vite build --mode production",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "preview:preprod": "vite preview --host 0.0.0.0 --port 4173",
+    "format": "prettier --write .",
+    "prepare": "husky install",
+    "test": "vitest run"
+  },
+  "engines": {
+    "node": "20"
+  },
+  "dependencies": {
+    "@ant-design/icons": "~5.6.1",
+    "@reduxjs/toolkit": "^2.8.2",
+    "antd": "^5.26.4",
+    "axios": "^1.7.9",
+    "moment": "^2.30.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-helmet-async": "^2.0.5",
+    "react-redux": "^9.2.0",
+    "react-router-dom": "^7.1.1",
+    "redux": "^5.0.1",
+    "redux-persist": "^6.0.0",
+    "sonner": "^1.7.1",
+    "tailwind-merge": "^2.6.0",
+    "tailwindcss-animate": "^1.0.7"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.17.0",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/node": "^22.10.6",
+    "@types/react": "^19.0.7",
+    "@types/react-dom": "^19.0.3",
+    "@typescript-eslint/eslint-plugin": "^8.20.0",
+    "@typescript-eslint/parser": "^8.20.0",
+    "@vitejs/plugin-react": "^4.3.4",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^9.18.0",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-prettier": "^5.5.0",
+    "eslint-plugin-react": "^7.37.4",
+    "eslint-plugin-react-hooks": "^5.1.0",
+    "eslint-plugin-react-refresh": "^0.4.18",
+    "globals": "^15.14.0",
+    "happy-dom": "^18.0.1",
+    "husky": "^9.1.7",
+    "identity-obj-proxy": "^3.0.0",
+    "lint-staged": "^16.1.2",
+    "postcss": "^8.5.1",
+    "prettier": "^3.5.3",
+    "prettier-plugin-tailwindcss": "^0.6.12",
+    "tailwindcss": "^3.4.17",
+    "typescript": "~5.6.2",
+    "typescript-eslint": "^8.18.2",
+    "vite": "^6.0.5",
+    "vitest": "^3.2.4"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,css,md}": [
+      "prettier --write"
+    ]
+  }
+}
