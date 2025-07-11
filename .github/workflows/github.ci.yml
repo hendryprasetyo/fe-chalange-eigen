@@ -1,4 +1,4 @@
-name: React Unit Test CI
+name: React CI
 
 on:
   push:
@@ -7,43 +7,40 @@ on:
     branches: ['master']
 
 jobs:
-  test:
+  test-and-build:
     runs-on: ubuntu-latest
-
     strategy:
       matrix:
         node-version: [20]
 
     steps:
-      # 1) Check out your code
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      # Checkout kode
+      - uses: actions/checkout@v4
 
-      # 2) Install pnpm and set Node 20
-      - name: Set up Node.js ${{ matrix.node-version }} + pnpm
+      # Setup Node 20 + pnpm
+      - name: Use Node.js ${{ matrix.node-version }} with pnpm
         uses: pnpm/action-setup@v2
         with:
-          version: 9 # choose the pnpm version you want
-          run_install: false # we’ll run it manually below
+          version: 9              # versi pnpm yang ingin kamu pakai
+          run_install: false
           node-version: ${{ matrix.node-version }}
 
-      # 3) Restore / save pnpm store for faster builds
+      # Cache store pnpm
       - name: Cache pnpm store
         uses: actions/cache@v4
         with:
           path: ~/.local/share/pnpm/store/v3
-          key: pnpm-store-${{ runner.os }}-${{ matrix.node-version }}-${{ hashFiles('pnpm-lock.yaml') }}
+          key: pnpm-${{ runner.os }}-${{ matrix.node-version }}-${{ hashFiles('pnpm-lock.yaml') }}
           restore-keys: |
-            pnpm-store-${{ runner.os }}-${{ matrix.node-version }}-
+            pnpm-${{ runner.os }}-${{ matrix.node-version }}-
 
-      # 4) Install project dependencies
+      # Install dependency
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      # 5) (Optional) Build the project
-      - name: Build the project
-        run: pnpm run build --if-present
+      - name: Build project
+        run: pnpm run build
 
-      # 6) Run the unit tests
-      - name: Run tests
+      # Jalankan unit test
+      - name: Run unit tests
         run: pnpm run test
