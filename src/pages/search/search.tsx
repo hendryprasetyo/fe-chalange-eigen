@@ -72,7 +72,11 @@ const SearchPage = () => {
           <div className="flex flex-col gap-4">
             {isLoading || isFetching ? (
               Array.from({ length: 5 }).map((_, idx) => (
-                <div key={idx} className="flex gap-4 rounded-lg bg-white p-4 shadow">
+                <div
+                  key={idx}
+                  className="flex gap-4 rounded-lg bg-white p-4 shadow"
+                  data-testid="card-search-skeleton"
+                >
                   <div className="flex flex-1 flex-col justify-between">
                     <Skeleton active style={{ width: '70%', marginBottom: 0 }} />
                     <Skeleton

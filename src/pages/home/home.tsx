@@ -27,7 +27,7 @@ const Home = () => {
     return (
       <>
         {/* Headline Section Skeleton */}
-        <section className="px-4 py-6">
+        <section className="px-4 py-6" data-testid="headline-skeleton">
           <div className="mx-auto grid max-w-6xl grid-cols-1 gap-6 md:grid-cols-3">
             {/* Headline Main (2 col) */}
             <div className="rounded-lg bg-white p-4 shadow md:col-span-2">
@@ -109,7 +109,7 @@ const Home = () => {
   return (
     <>
       {/* Headline Section */}
-      <section className="px-4 py-6">
+      <section className="px-4 py-6" data-testid="headline-main">
         <div className="mx-auto grid max-w-6xl grid-cols-1 gap-6 md:grid-cols-3">
           <div className="md:col-span-2">
             <CardHeadlineMain data={mainArticle} />
@@ -123,7 +123,7 @@ const Home = () => {
       </section>
 
       {/* Iklan Carousel Section */}
-      <section className="flex justify-center px-4 py-10">
+      <section className="flex justify-center px-4 py-10" data-testid="ads-carousel">
         <div className="w-full max-w-6xl overflow-hidden rounded-xl shadow-md">
           <Carousel autoplay dots>
             {iklanImages.map((imgSrc, index) => (
@@ -148,7 +148,10 @@ const Home = () => {
       </section>
 
       {/* Popular Section with Manual Carousel */}
-      <section className="flex flex-col items-center justify-center gap-6 py-10">
+      <section
+        className="flex flex-col items-center justify-center gap-6 py-10"
+        data-testid="popular-section"
+      >
         <Title level={4}>Terpopuler</Title>
 
         <div className="relative w-full max-w-7xl">
